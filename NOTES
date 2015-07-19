@@ -1,7 +1,16 @@
-Cool Python Things
-- enumerate()
-- re
-- PyPI
-- WSGI
-- list comprehensions
-- generators (built-in co-routines)
+Outline:
+- Intro (2 min)
+- WSGI (10 min)
+  - Spec highlights (3 min)
+  - Applications (2 min)
+  - Servers (2 min)
+  - Middleware (3 min)
+- Web Frameworks (18 min)
+  - Components (3 min)
+  - Django (5 min)
+  - Flask (5 min)
+  - Pyramid (5 min)
+  - Deployment (5 min)
+- Networking/Concurrency Libraries (10 min)
+  - gevent, eventlet (5 min)
+  - Twisted (5 min)

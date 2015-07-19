@@ -1,0 +1,21 @@
+.small {
+    font-size: 32px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li:before {
+    content: "*";
+}
+
+#impress div.step {
+    font-size: 32px;
+}
+
+#impress div.step h1 {
+    top: 10px;
+    left: 10px;
+    font-size: 48px;
+}
