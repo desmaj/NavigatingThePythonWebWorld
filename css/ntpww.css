@@ -19,3 +19,7 @@ li:before {
     left: 10px;
     font-size: 48px;
 }
+
+img.lineup {
+    float: left;
+}

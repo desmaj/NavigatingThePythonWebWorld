@@ -24,6 +24,13 @@
       
       <div class="step" data-x="0" data-y="4000" data-z="0">
 	<h1>Who am I?</h1>
+	<br/>
+	<div class="lineup">
+	  <img class="lineup" src="images/matty-desmarais.jpeg" width="200px" height="200px" />
+	  <img class="lineup" src="images/aykroyd.jpg" width="200px" height="200px" />
+	  <img class="lineup" src="images/matt-and-laura.jpg" width="200px" height="200px" />
+	  <img class="lineup" src="images/young-matthew-desmarais.jpeg" width="200px" height="200px" />
+	</div>
 	<div class="notes">
 	  I've been around software since Y2K.<br/>
 	  Started testing avionics software (jet engine controls, nav software)<br/>
@@ -34,7 +41,8 @@
       </div>
       
       <div class="step" data-x="1024" data-y="4000" data-z="0">
-	<h1>Why are we here? 42</h1>
+	<h1>Why are we here?</h1>
+	<img src="images/five.png" />
 	<div class="notes">
 	  <ul>
 	    <li>TIOBE index: Python is #5 (behind Java, c, c++, c#)</li>
@@ -52,6 +60,12 @@
 	  <li>Deployment:<br>mod_wsgi, reverse proxying, Docker</li>
 	  <li>Networking libraries:<br>gevent, eventlet, Twisted</li>
 	</ul>
+	<div class="notes">
+	</div>
+      </div>
+      
+      <div class="step" data-x="2048" data-y="6000" data-z="0">
+	<img src="images/whiskey.jpg"></a>
 	<div class="notes">
 	</div>
       </div>
@@ -151,6 +165,10 @@ def start_response(status, headers, exc_info=None):
 	</div>
       </div>
       
+      <div class="step" data-x="8192" data-y="2000" data-z="100">
+	<img src="images/python-kitten.jpg" />
+      </div>
+      
       <div class="step" data-x="8192" data-y="4000" data-z="0">
 	<h1>WSGI: Application</h1>
 	<br/>
@@ -184,10 +202,8 @@ def application(environ, start_response):
       
       <div class="step" data-x="10240" data-y="4000" data-z="0">
 	<h1>WSGI: Middleware</h1>
-	<br/>
-	<p>
-	  Server -> <u>Middleware</u> -> Application
-	</p>
+	<img src="images/Russian-Matroshka.jpg" width="460px" height="345px" />
+	<p>Server -> <u>Middleware</u> -> Application</p>
 	<div class="notes">
 	  <ul>
 	    An interesting part of the WSGI spec is that it only specifies how
@@ -200,8 +216,24 @@ def application(environ, start_response):
       
       <div class="step" data-x="11264" data-y="4000" data-z="0">
 	<h1>WSGI: Middleware example - Beaker</h1>
-	<br/>
 	<p>Session and caching middleware</p>
+	<pre class="code">
+from beaker.middleware import SessionMiddleware
+
+def simple_app(environ, start_response):
+    session = environ['beaker.session']
+    user = 'logged_in' in session
+    session['user_id'] = 10
+    start_response('200 OK', [('Content-type', 'text/plain')])
+    return ['User is logged in: %s' % user]
+
+# Configure the SessionMiddleware
+session_opts = {
+    'session.type': 'file',
+    'session.cookie_expires': True,
+}
+wsgi_app = SessionMiddleware(simple_app, session_opts)
+	</pre>
 	<div class="notes">
 	  On ingress, the middleware adds a session to the environ. Also: it can
 	  inspect the request to determine if it has a cached page that
@@ -248,6 +280,14 @@ def application(environ, start_response):
 	</div>
       </div>
       
+      <div class="step" data-x="12288" data-y="6000" data-z="0">
+	<img src="images/gorilla.jpeg" width="600px" height="756px" ></a>
+      </div>
+      
+      <div class="step" data-x="13312" data-y="6000" data-z="0">
+	<img src="images/django-pony.jpg" width="750px" height="375px" ></a>
+      </div>
+      
       <div class="step" data-x="13312" data-y="4000" data-z="0">
 	<h1>Web frameworks - Django - Request dispatch</h1>
 	<br/>
@@ -282,7 +322,7 @@ urlpatterns = patterns('', (r'^hello/$', yoohoo))
     &lt;/head&gt;
     &lt;body&gt;
         &lt;h1&gt;
-            Hi, {{ name }}!<br/>
+            Hi, {{ name }}!
             My time is &lt;strong&gt;{% now "H:i:s" %}&lt;/strong&gt;
         &lt;/h1&gt;
     &lt;/body&gt;
